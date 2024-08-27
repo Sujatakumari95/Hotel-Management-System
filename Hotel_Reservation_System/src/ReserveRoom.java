@@ -10,9 +10,46 @@ public class ReserveRoom {
      System.out.print("Enter Guest name: ");
 	 String guestName = scanner.next();
 	 System.out.print("Enter room number: ");
-	 int roomNumber = scanner.nextInt();
+	System.out.print("201,202,203,204,205,206,207,208");
+	 System.out.println();
+	 System.out.println("Reserved room ");
+	 roomInfo(connection);
+	 int roomNumber;
+	 while(true) {
+	
+     roomNumber = scanner.nextInt();
+	 switch(roomNumber) {
+	 case 201:
+	 case 202:
+     case 203:	 
+     case 204:
+     case 205:
+     case 206:
+     case 207:
+     case 208:
+    	 break;
+    default: 
+    	System.out.println("Invalid Room Number! Re-enter room number");
+    continue;
+	 }
+	 break;
+	 }
+	 
+	 
 	 System.out.print("Enter contact number: ");
-	 String contactNumber = scanner.next();
+	 String contactNumber;
+	 
+	while(true) {
+		
+		contactNumber = scanner.next();
+		 // Check if the contact number is exactly 10 digits
+        if (contactNumber.length() == 10 && contactNumber.matches("\\d+")) {
+            break;  // Valid contact number
+        } else {
+            System.out.println("Invalid contact number. Please enter a 10-digit number.");
+        }
+    }
+	 
 	 String query ="INSERT INTO reservations(guest_name, room_number, contact_number) VALUES (?,?,?);";
 	 
 		 try(PreparedStatement prepareStatement = connection.prepareStatement(query)){
